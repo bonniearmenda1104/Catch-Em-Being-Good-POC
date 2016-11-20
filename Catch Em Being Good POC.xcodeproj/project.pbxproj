@@ -509,6 +509,7 @@
 				E333C6C21DD195EC0076CCF1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E333C6C31DD195EC0076CCF1 /* Build configuration list for PBXNativeTarget "Catch Em Being Good POCTests" */ = {
 			isa = XCConfigurationList;
@@ -517,6 +518,7 @@
 				E333C6C51DD195EC0076CCF1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E333C6C61DD195EC0076CCF1 /* Build configuration list for PBXNativeTarget "Catch Em Being Good POCUITests" */ = {
 			isa = XCConfigurationList;
@@ -525,6 +527,7 @@
 				E333C6C81DD195EC0076CCF1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
