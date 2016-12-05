@@ -10,6 +10,9 @@ import UIKit
 
 class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
+    var timer = Timer()
+    var seconds = 2
+    @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var TimePicker: UIPickerView!
 
     override func viewDidLoad() {
@@ -37,6 +40,8 @@ class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, U
         
         self.view.addSubview(TimePicker)
         
+        timeLabel.isHidden = true
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,6 +49,7 @@ class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, U
         // Dispose of any resources that can be recreated.
     }
     
+    //MARK: - Timer Picker UI
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 3;
     }
@@ -71,6 +77,49 @@ class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, U
         return columnView;
         
     }
+    
+    //MARK: - Timer Picker Actions
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let selectedHour = pickerView.selectedRow(inComponent: 0)
+        let selectedMinute = pickerView.selectedRow(inComponent: 1)
+        let selectedSeconds = pickerView.selectedRow(inComponent: 2) + 1
+        
+        seconds = selectedHour*3600 + selectedMinute*60 + selectedSeconds
+        
+    }
+    
+    //MARK: - Timer functions
+    @IBAction func cancel(_ sender: UIButton) {
+        timer.invalidate()
+        timeLabel.isHidden = true
+        TimePicker.isHidden = false
+    }
+    
+    @IBAction func start(_ sender: UIButton) {
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(countDown), userInfo: nil, repeats: true)
+    }
+    
+    @objc private func countDown()
+    {
+        seconds -= 1
+        timeLabel.text = timeFormatted(totalSeconds: seconds)
+        timeLabel.isHidden = false
+        TimePicker.isHidden = true
+        if(seconds == 0)
+        {
+            timer.invalidate()
+            timeLabel.isHidden = true
+            TimePicker.isHidden = false
+        }
+    }
+    
+    private func timeFormatted(totalSeconds: Int) -> String {
+        let seconds: Int = totalSeconds % 60
+        let minutes: Int = (totalSeconds / 60) % 60
+        let hours: Int = totalSeconds / 3600
+        return String(format: "%02d:%02d:%02d", hours, minutes, seconds)
+    }
+    
     /*
     // MARK: - Navigation
 
