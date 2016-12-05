@@ -15,6 +15,7 @@
 		E333C6A61DD195EC0076CCF1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E333C6A41DD195EC0076CCF1 /* LaunchScreen.storyboard */; };
 		E333C6B11DD195EC0076CCF1 /* Catch_Em_Being_Good_POCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E333C6B01DD195EC0076CCF1 /* Catch_Em_Being_Good_POCTests.swift */; };
 		E333C6BC1DD195EC0076CCF1 /* Catch_Em_Being_Good_POCUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E333C6BB1DD195EC0076CCF1 /* Catch_Em_Being_Good_POCUITests.swift */; };
+		E3DF947D1DE155DB005AE8F2 /* CustomTimerPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DF947C1DE155DB005AE8F2 /* CustomTimerPickerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		E333C6B71DD195EC0076CCF1 /* Catch Em Being Good POCUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Catch Em Being Good POCUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E333C6BB1DD195EC0076CCF1 /* Catch_Em_Being_Good_POCUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Catch_Em_Being_Good_POCUITests.swift; sourceTree = "<group>"; };
 		E333C6BD1DD195EC0076CCF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E3DF947C1DE155DB005AE8F2 /* CustomTimerPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTimerPickerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				E333C69B1DD195EC0076CCF1 /* FirstViewController.swift */,
 				E333C69D1DD195EC0076CCF1 /* SecondViewController.swift */,
 				E333C69F1DD195EC0076CCF1 /* Main.storyboard */,
+				E3DF947C1DE155DB005AE8F2 /* CustomTimerPickerViewController.swift */,
 				E333C6A21DD195EC0076CCF1 /* Assets.xcassets */,
 				E333C6A41DD195EC0076CCF1 /* LaunchScreen.storyboard */,
 				E333C6A71DD195EC0076CCF1 /* Info.plist */,
@@ -263,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E333C69E1DD195EC0076CCF1 /* SecondViewController.swift in Sources */,
+				E3DF947D1DE155DB005AE8F2 /* CustomTimerPickerViewController.swift in Sources */,
 				E333C69A1DD195EC0076CCF1 /* AppDelegate.swift in Sources */,
 				E333C69C1DD195EC0076CCF1 /* FirstViewController.swift in Sources */,
 			);
