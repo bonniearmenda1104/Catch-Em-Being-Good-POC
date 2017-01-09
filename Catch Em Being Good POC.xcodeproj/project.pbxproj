@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E327C5C41DF52BCE003579F2 /* TimerEndsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E327C5C31DF52BCE003579F2 /* TimerEndsTableViewController.swift */; };
 		E333C69A1DD195EC0076CCF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E333C6991DD195EC0076CCF1 /* AppDelegate.swift */; };
 		E333C69C1DD195EC0076CCF1 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E333C69B1DD195EC0076CCF1 /* FirstViewController.swift */; };
 		E333C69E1DD195EC0076CCF1 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E333C69D1DD195EC0076CCF1 /* SecondViewController.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E327C5C31DF52BCE003579F2 /* TimerEndsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerEndsTableViewController.swift; sourceTree = "<group>"; };
 		E333C6961DD195EC0076CCF1 /* Catch Em Being Good POC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Catch Em Being Good POC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E333C6991DD195EC0076CCF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E333C69B1DD195EC0076CCF1 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				E333C6A21DD195EC0076CCF1 /* Assets.xcassets */,
 				E333C6A41DD195EC0076CCF1 /* LaunchScreen.storyboard */,
 				E333C6A71DD195EC0076CCF1 /* Info.plist */,
+				E327C5C31DF52BCE003579F2 /* TimerEndsTableViewController.swift */,
 			);
 			path = "Catch Em Being Good POC";
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 				E3DF947D1DE155DB005AE8F2 /* CustomTimerPickerViewController.swift in Sources */,
 				E333C69A1DD195EC0076CCF1 /* AppDelegate.swift in Sources */,
 				E333C69C1DD195EC0076CCF1 /* FirstViewController.swift in Sources */,
+				E327C5C41DF52BCE003579F2 /* TimerEndsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

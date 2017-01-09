@@ -8,13 +8,14 @@
 
 import UIKit
 
-class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDelegate, UITableViewDataSource {
 
     var timer = Timer()
     var seconds = 2
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var TimePicker: UIPickerView!
-
+    @IBOutlet weak var TimerEndsTable: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -42,6 +43,13 @@ class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, U
         
         timeLabel.isHidden = true
         
+        TimerEndsTable.dataSource = self
+        TimerEndsTable.delegate = self
+        let timerEndsCell:UITableViewCell = UITableViewCell()
+        timerEndsCell.textLabel?.text = "When Timer Ends"
+        TimerEndsTable.addSubview(timerEndsCell)
+        self.view.addSubview(TimerEndsTable)
+ 
     }
 
     override func didReceiveMemoryWarning() {
@@ -120,14 +128,32 @@ class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, U
         return String(format: "%02d:%02d:%02d", hours, minutes, seconds)
     }
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "ShowRingtoneSegue"
+        {
+            _ = segue.destination
+            
+        }
     }
-    */
-
+    
+    //MARK: - TableView
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1;
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1;
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell();
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "ShowRingtoneSegue", sender:self)
+    }
+ 
 }
