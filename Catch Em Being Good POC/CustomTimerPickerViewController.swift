@@ -153,6 +153,7 @@ class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, U
         return UITableViewCell();
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         performSegue(withIdentifier: "ShowRingtoneSegue", sender:self)
     }
  

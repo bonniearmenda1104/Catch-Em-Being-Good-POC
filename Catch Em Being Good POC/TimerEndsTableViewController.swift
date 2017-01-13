@@ -10,6 +10,16 @@ import UIKit
 
 class TimerEndsTableViewController: UITableViewController {
 
+    var ringtones:[String] = ["Ringtone 1", "Ringtone 2", "Ringtone 3", "Ringtone 4", "Ringtone 5"];
+    var selectedRingtoneIndex:Int?
+    var selectedRingtone:String?{
+        didSet {
+            if let tone = selectedRingtone{
+                selectedRingtoneIndex = ringtones.index(of: tone)!
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -38,15 +48,35 @@ class TimerEndsTableViewController: UITableViewController {
         return 5
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ringtone", for: indexPath)
+        cell.textLabel?.text = ringtones[indexPath.row]
 
         // Configure the cell...
-
+        if indexPath.row == selectedRingtoneIndex{
+            cell.accessoryType = .checkmark
+        }
+        else{
+            cell.accessoryType = .none
+        }
         return cell
     }
-    */
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if let index = selectedRingtoneIndex{
+            let cell = tableView.cellForRow(at: NSIndexPath(row: index, section: 0) as IndexPath)
+            cell?.accessoryType = .none
+        }
+        
+        selectedRingtone = ringtones[indexPath.row]
+        
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.accessoryType = .checkmark
+        
+        //TODO: Play ringtone noise
+    }
 
     /*
     // Override to support conditional editing of the table view.
