@@ -16,6 +16,8 @@
 		E333C6A61DD195EC0076CCF1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E333C6A41DD195EC0076CCF1 /* LaunchScreen.storyboard */; };
 		E333C6B11DD195EC0076CCF1 /* Catch_Em_Being_Good_POCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E333C6B01DD195EC0076CCF1 /* Catch_Em_Being_Good_POCTests.swift */; };
 		E333C6BC1DD195EC0076CCF1 /* Catch_Em_Being_Good_POCUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E333C6BB1DD195EC0076CCF1 /* Catch_Em_Being_Good_POCUITests.swift */; };
+		E3CED5511E40597900DA3DD6 /* CustomRecurringCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CED54F1E40597900DA3DD6 /* CustomRecurringCell.swift */; };
+		E3CED5521E40597900DA3DD6 /* CustomRecurringCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3CED5501E40597900DA3DD6 /* CustomRecurringCell.xib */; };
 		E3DF947D1DE155DB005AE8F2 /* CustomTimerPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DF947C1DE155DB005AE8F2 /* CustomTimerPickerViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +54,8 @@
 		E333C6B71DD195EC0076CCF1 /* Catch Em Being Good POCUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Catch Em Being Good POCUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E333C6BB1DD195EC0076CCF1 /* Catch_Em_Being_Good_POCUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Catch_Em_Being_Good_POCUITests.swift; sourceTree = "<group>"; };
 		E333C6BD1DD195EC0076CCF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E3CED54F1E40597900DA3DD6 /* CustomRecurringCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomRecurringCell.swift; sourceTree = "<group>"; };
+		E3CED5501E40597900DA3DD6 /* CustomRecurringCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomRecurringCell.xib; sourceTree = "<group>"; };
 		E3DF947C1DE155DB005AE8F2 /* CustomTimerPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTimerPickerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -112,6 +116,8 @@
 				E333C6A41DD195EC0076CCF1 /* LaunchScreen.storyboard */,
 				E333C6A71DD195EC0076CCF1 /* Info.plist */,
 				E327C5C31DF52BCE003579F2 /* TimerEndsTableViewController.swift */,
+				E3CED54F1E40597900DA3DD6 /* CustomRecurringCell.swift */,
+				E3CED5501E40597900DA3DD6 /* CustomRecurringCell.xib */,
 			);
 			path = "Catch Em Being Good POC";
 			sourceTree = "<group>";
@@ -202,15 +208,18 @@
 				TargetAttributes = {
 					E333C6951DD195EC0076CCF1 = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 2H82SKPCVG;
 						ProvisioningStyle = Automatic;
 					};
 					E333C6AB1DD195EC0076CCF1 = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 2H82SKPCVG;
 						ProvisioningStyle = Automatic;
 						TestTargetID = E333C6951DD195EC0076CCF1;
 					};
 					E333C6B61DD195EC0076CCF1 = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 2H82SKPCVG;
 						ProvisioningStyle = Automatic;
 						TestTargetID = E333C6951DD195EC0076CCF1;
 					};
@@ -241,6 +250,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3CED5521E40597900DA3DD6 /* CustomRecurringCell.xib in Resources */,
 				E333C6A61DD195EC0076CCF1 /* LaunchScreen.storyboard in Resources */,
 				E333C6A31DD195EC0076CCF1 /* Assets.xcassets in Resources */,
 				E333C6A11DD195EC0076CCF1 /* Main.storyboard in Resources */,
@@ -272,6 +282,7 @@
 				E3DF947D1DE155DB005AE8F2 /* CustomTimerPickerViewController.swift in Sources */,
 				E333C69A1DD195EC0076CCF1 /* AppDelegate.swift in Sources */,
 				E333C69C1DD195EC0076CCF1 /* FirstViewController.swift in Sources */,
+				E3CED5511E40597900DA3DD6 /* CustomRecurringCell.swift in Sources */,
 				E327C5C41DF52BCE003579F2 /* TimerEndsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -352,6 +363,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 2H82SKPCVG;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -371,6 +383,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = ljlkj;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -403,6 +416,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 2H82SKPCVG;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -415,6 +429,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = ljlkj;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -47,9 +47,17 @@ class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, U
         TimerEndsTable.delegate = self
         let timerEndsCell:UITableViewCell = UITableViewCell()
         timerEndsCell.textLabel?.text = "When Timer Ends"
+        //timerEndsCell.detailTextLabel?.text = "Selected Ringtone"
+        timerEndsCell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
         TimerEndsTable.addSubview(timerEndsCell)
+        
+        //Register recurring cell xib
+        TimerEndsTable.register(UINib(nibName: "CustomRecurringCell", bundle: nil), forCellReuseIdentifier: "RecurringCell")
+        let recurringCell:CustomRecurringCell = CustomRecurringCell()
+        TimerEndsTable.addSubview(recurringCell)
+        
         self.view.addSubview(TimerEndsTable)
- 
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -147,7 +155,7 @@ class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, U
         return 1;
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1;
+        return 2;
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return UITableViewCell();
