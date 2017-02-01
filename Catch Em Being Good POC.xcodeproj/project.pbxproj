@@ -16,6 +16,8 @@
 		E333C6A61DD195EC0076CCF1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E333C6A41DD195EC0076CCF1 /* LaunchScreen.storyboard */; };
 		E333C6B11DD195EC0076CCF1 /* Catch_Em_Being_Good_POCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E333C6B01DD195EC0076CCF1 /* Catch_Em_Being_Good_POCTests.swift */; };
 		E333C6BC1DD195EC0076CCF1 /* Catch_Em_Being_Good_POCUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E333C6BB1DD195EC0076CCF1 /* Catch_Em_Being_Good_POCUITests.swift */; };
+		E37856371E417BC300476269 /* CustomTimerEndsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37856351E417BC300476269 /* CustomTimerEndsCell.swift */; };
+		E37856381E417BC300476269 /* CustomTimerEndsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E37856361E417BC300476269 /* CustomTimerEndsCell.xib */; };
 		E3CED5511E40597900DA3DD6 /* CustomRecurringCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CED54F1E40597900DA3DD6 /* CustomRecurringCell.swift */; };
 		E3CED5521E40597900DA3DD6 /* CustomRecurringCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3CED5501E40597900DA3DD6 /* CustomRecurringCell.xib */; };
 		E3DF947D1DE155DB005AE8F2 /* CustomTimerPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DF947C1DE155DB005AE8F2 /* CustomTimerPickerViewController.swift */; };
@@ -54,6 +56,8 @@
 		E333C6B71DD195EC0076CCF1 /* Catch Em Being Good POCUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Catch Em Being Good POCUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E333C6BB1DD195EC0076CCF1 /* Catch_Em_Being_Good_POCUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Catch_Em_Being_Good_POCUITests.swift; sourceTree = "<group>"; };
 		E333C6BD1DD195EC0076CCF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E37856351E417BC300476269 /* CustomTimerEndsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTimerEndsCell.swift; sourceTree = "<group>"; };
+		E37856361E417BC300476269 /* CustomTimerEndsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomTimerEndsCell.xib; sourceTree = "<group>"; };
 		E3CED54F1E40597900DA3DD6 /* CustomRecurringCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomRecurringCell.swift; sourceTree = "<group>"; };
 		E3CED5501E40597900DA3DD6 /* CustomRecurringCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomRecurringCell.xib; sourceTree = "<group>"; };
 		E3DF947C1DE155DB005AE8F2 /* CustomTimerPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTimerPickerViewController.swift; sourceTree = "<group>"; };
@@ -118,6 +122,8 @@
 				E327C5C31DF52BCE003579F2 /* TimerEndsTableViewController.swift */,
 				E3CED54F1E40597900DA3DD6 /* CustomRecurringCell.swift */,
 				E3CED5501E40597900DA3DD6 /* CustomRecurringCell.xib */,
+				E37856351E417BC300476269 /* CustomTimerEndsCell.swift */,
+				E37856361E417BC300476269 /* CustomTimerEndsCell.xib */,
 			);
 			path = "Catch Em Being Good POC";
 			sourceTree = "<group>";
@@ -250,6 +256,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E37856381E417BC300476269 /* CustomTimerEndsCell.xib in Resources */,
 				E3CED5521E40597900DA3DD6 /* CustomRecurringCell.xib in Resources */,
 				E333C6A61DD195EC0076CCF1 /* LaunchScreen.storyboard in Resources */,
 				E333C6A31DD195EC0076CCF1 /* Assets.xcassets in Resources */,
@@ -280,6 +287,7 @@
 			files = (
 				E333C69E1DD195EC0076CCF1 /* SecondViewController.swift in Sources */,
 				E3DF947D1DE155DB005AE8F2 /* CustomTimerPickerViewController.swift in Sources */,
+				E37856371E417BC300476269 /* CustomTimerEndsCell.swift in Sources */,
 				E333C69A1DD195EC0076CCF1 /* AppDelegate.swift in Sources */,
 				E333C69C1DD195EC0076CCF1 /* FirstViewController.swift in Sources */,
 				E3CED5511E40597900DA3DD6 /* CustomRecurringCell.swift in Sources */,

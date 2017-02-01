@@ -45,17 +45,15 @@ class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, U
         
         TimerEndsTable.dataSource = self
         TimerEndsTable.delegate = self
-        let timerEndsCell:UITableViewCell = UITableViewCell()
-        timerEndsCell.textLabel?.text = "When Timer Ends"
-        //timerEndsCell.detailTextLabel?.text = "Selected Ringtone"
-        timerEndsCell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
-        TimerEndsTable.addSubview(timerEndsCell)
-        
+        TimerEndsTable.register(UINib(nibName: "CustomTimerEndsCell", bundle: nil), forCellReuseIdentifier: "TimerEndsCell")
+//        let timerEndsCell:CustomTimerEndsCell = (TimerEndsTable.dequeueReusableCell(withIdentifier: "TimerEndsCell")as? CustomTimerEndsCell)!
+//        TimerEndsTable.addSubview(timerEndsCell)
+//        
         //Register recurring cell xib
         TimerEndsTable.register(UINib(nibName: "CustomRecurringCell", bundle: nil), forCellReuseIdentifier: "RecurringCell")
-        let recurringCell:CustomRecurringCell = CustomRecurringCell()
-        TimerEndsTable.addSubview(recurringCell)
-        
+//        let recurringCell:CustomRecurringCell = (TimerEndsTable.dequeueReusableCell(withIdentifier: "RecurringCell")as? CustomRecurringCell)!
+//        TimerEndsTable.addSubview(recurringCell)
+//        
         self.view.addSubview(TimerEndsTable)
         
     }
@@ -158,7 +156,15 @@ class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, U
         return 2;
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell();
+        if indexPath.row == 0{
+            let timerEndsCell:CustomTimerEndsCell = (TimerEndsTable.dequeueReusableCell(withIdentifier: "TimerEndsCell")as? CustomTimerEndsCell)!
+
+            return timerEndsCell
+        }
+        else{
+            let recurringCell:CustomRecurringCell = (TimerEndsTable.dequeueReusableCell(withIdentifier: "RecurringCell")as? CustomRecurringCell)!
+            return recurringCell
+        }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
