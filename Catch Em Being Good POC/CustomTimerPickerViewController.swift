@@ -12,6 +12,8 @@ class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, U
 
     var timer = Timer()
     var seconds = 2
+    var selectedRingtone = "Ringtone 1"
+    
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var TimePicker: UIPickerView!
     @IBOutlet weak var TimerEndsTable: UITableView!
@@ -143,8 +145,19 @@ class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, U
         // Pass the selected object to the new view controller.
         if segue.identifier == "ShowRingtoneSegue"
         {
-            _ = segue.destination
+            if let ringtoneVC = segue.destination as? TimerEndsTableViewController {
+                //Update Timer Ends table view to add checkmark to saved ringtone value
+//                if selectedRingtone.isEmpty{
+//                    selectedRingtone = "Ringtone 1"
+//                }
+                ringtoneVC.selectedRingtone = selectedRingtone
+            }
+//            print (segue.destination.description)
             
+        }
+        if segue.identifier == "SaveRingtoneSegue"
+        {
+            selectedRingtone = "Ringtone 1"
         }
     }
     
@@ -158,7 +171,7 @@ class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, U
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0{
             let timerEndsCell:CustomTimerEndsCell = (TimerEndsTable.dequeueReusableCell(withIdentifier: "TimerEndsCell")as? CustomTimerEndsCell)!
-
+            timerEndsCell.detailTextLabel?.text = selectedRingtone
             return timerEndsCell
         }
         else{
@@ -168,7 +181,23 @@ class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, U
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        performSegue(withIdentifier: "ShowRingtoneSegue", sender:self)
+        if indexPath.row == 0{
+            performSegue(withIdentifier: "ShowRingtoneSegue", sender:self)
+        }
     }
  
+    
+    //MARK: - Unwind
+    @IBAction func cancelToTimer(segue:UIStoryboardSegue){
+        
+    }
+    
+    @IBAction func saveSelectedRingtone(segue:UIStoryboardSegue){
+        if let timerEndsVC = segue.source as? TimerEndsTableViewController{
+            selectedRingtone = timerEndsVC.selectedRingtone!
+            TimerEndsTable.cellForRow(at: NSIndexPath(row: 0, section: 0) as IndexPath)?.detailTextLabel?.text = selectedRingtone
+        }
+    }
+    
+    
 }

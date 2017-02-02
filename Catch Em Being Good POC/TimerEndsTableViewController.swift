@@ -64,6 +64,7 @@ class TimerEndsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //Deselected previously selected row
         tableView.deselectRow(at: indexPath, animated: true)
         if let index = selectedRingtoneIndex{
             let cell = tableView.cellForRow(at: NSIndexPath(row: index, section: 0) as IndexPath)
@@ -77,7 +78,7 @@ class TimerEndsTableViewController: UITableViewController {
         
         //TODO: Play ringtone noise
     }
-
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
