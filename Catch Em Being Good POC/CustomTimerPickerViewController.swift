@@ -13,6 +13,9 @@ class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, U
     var timer = Timer()
     var seconds = 2
     var selectedRingtone = "Ringtone 1"
+    var selectedHour = 0
+    var selectedMinute = 0
+    var selectedSeconds = 0
     
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var TimePicker: UIPickerView!
@@ -96,9 +99,9 @@ class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, U
     
     //MARK: - Timer Picker Actions
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let selectedHour = pickerView.selectedRow(inComponent: 0)
-        let selectedMinute = pickerView.selectedRow(inComponent: 1)
-        let selectedSeconds = pickerView.selectedRow(inComponent: 2) + 1
+        selectedHour = pickerView.selectedRow(inComponent: 0)
+        selectedMinute = pickerView.selectedRow(inComponent: 1)
+        selectedSeconds = pickerView.selectedRow(inComponent: 2) + 1
         
         seconds = selectedHour*3600 + selectedMinute*60 + selectedSeconds
         
@@ -109,6 +112,7 @@ class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, U
         timer.invalidate()
         timeLabel.isHidden = true
         TimePicker.isHidden = false
+        seconds = selectedHour*3600 + selectedMinute*60 + selectedSeconds
     }
     
     @IBAction func start(_ sender: UIButton) {
@@ -126,6 +130,7 @@ class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, U
             timer.invalidate()
             timeLabel.isHidden = true
             TimePicker.isHidden = false
+            seconds = selectedHour*3600 + selectedMinute*60 + selectedSeconds
         }
     }
     
