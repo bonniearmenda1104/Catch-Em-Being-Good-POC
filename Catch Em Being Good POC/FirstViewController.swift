@@ -61,8 +61,17 @@ class FirstViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         timeLabel.isHidden = true
         timeSelector.countDownDuration = 60.0;
+        
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        AppUtility.lockOrientation(.portrait)
+        // Or to rotate and lock
+        // AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
+        
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
