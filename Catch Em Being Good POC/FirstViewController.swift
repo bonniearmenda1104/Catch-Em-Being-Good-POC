@@ -10,57 +10,67 @@ import UIKit
 
 class FirstViewController: UIViewController {
 
-    var timer = Timer()
-    var seconds = 60
+
+    var currentTime = 0
+    var stopwatchTimer = Timer()
     
+    @IBOutlet weak var timeLbl: UILabel!
+    @IBOutlet weak var stopBtn: UIButton!
+    @IBOutlet weak var startBtn: UIButton!
+    @IBOutlet weak var resetBtn: UIButton!
     
-    @IBOutlet weak var timeSelector: UIDatePicker!
-    @IBOutlet weak var timeLabel: UILabel!
-    
-    @IBAction func timeSelection(_ sender: UIDatePicker)
-    {
-        seconds = Int(sender.countDownDuration)
-        timeLabel.text = timeFormatted(totalSeconds: seconds)
+    @IBAction func startClicked(_ sender: Any) {
+        
+        startBtn.isHidden = true
+        stopBtn.isHidden = false
+        resetBtn.isEnabled = true
+        
+        stopwatchTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(FirstViewController.updateTime)), userInfo: nil, repeats: true)
     }
     
-    @IBAction func cancel(_ sender: UIButton)
-    {
-        timer.invalidate()
-        timeLabel.isHidden = true
-        timeSelector.isHidden = false
+    @IBAction func stopClicked(_ sender: Any) {
+        stopBtn.isHidden = true
+        startBtn.isHidden = false
+        
+        stopwatchTimer.invalidate()
     }
     
-    @IBAction func start(_ sender: UIButton)
-    {
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(countDown), userInfo: nil, repeats: true)
+    @IBAction func resetClicked(_ sender: Any) {
+        stopBtn.isHidden = true
+        startBtn.isHidden = false
+        resetBtn.isEnabled = false
+        
+        stopwatchTimer.invalidate()
+        
+        currentTime = 0
+        timeLbl.text = "00:00"
+        
     }
     
-    @objc private func countDown()
+    @objc private func updateTime()
     {
-        seconds -= 1
-        timeLabel.text = timeFormatted(totalSeconds: seconds)
-        timeSelector.isHidden = true
-        timeLabel.isHidden = false
-        if(seconds == 0)
+        currentTime += 1
+        
+        if currentTime == 3600000
         {
-            timer.invalidate()
-            timeLabel.isHidden = true
-            timeSelector.isHidden = false
+            //reached an hour, let's reset
+            currentTime = 0
+            
         }
-    }
-    
-    private func timeFormatted(totalSeconds: Int) -> String {
-        let seconds: Int = totalSeconds % 60
-        let minutes: Int = (totalSeconds / 60) % 60
-        let hours: Int = totalSeconds / 3600
-        return String(format: "%02d:%02d:%02d", hours, minutes, seconds)
+        //let millisecs: Int = currentTime % 100
+        let seconds: Int = currentTime % 60
+        let minutes: Int = currentTime / 60
+        timeLbl.text = String(format: "%02d:%02d", minutes, seconds)
+
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        timeLabel.isHidden = true
-        timeSelector.countDownDuration = 60.0;
+        stopBtn.isHidden = true
+        resetBtn.isEnabled = false
+        
+        timeLbl.text = "00:00"
         
     }
 
