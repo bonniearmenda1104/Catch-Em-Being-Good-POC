@@ -127,6 +127,17 @@ class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, U
         TimePicker.isHidden = true
         if(seconds == 0)
         {
+            //Show timer alert for 10 seconds
+            let alert:UIAlertController = UIAlertController(title: "Timer is Done", message: ("TODO play the selected ringtone which is: " + selectedRingtone), preferredStyle: .alert)
+            self.present(alert, animated: true, completion: nil)
+            
+            // change to desired number of seconds (in this case 10 seconds)
+            let when = DispatchTime.now() + 10
+            DispatchQueue.main.asyncAfter(deadline: when){
+                // your code with delay
+                alert.dismiss(animated: true, completion: nil)
+            }
+            
             timer.invalidate()
             timeLabel.isHidden = true
             TimePicker.isHidden = false

@@ -76,7 +76,7 @@ class TimerEndsTableViewController: UITableViewController {
         let cell = tableView.cellForRow(at: indexPath)
         cell?.accessoryType = .checkmark
         
-        //TODO: Play ringtone noise
+        //TODO: Play ringtone noise as sample
         
     }
     
