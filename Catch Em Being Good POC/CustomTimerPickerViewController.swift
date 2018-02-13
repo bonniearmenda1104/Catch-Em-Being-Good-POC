@@ -16,6 +16,7 @@ class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, U
     var selectedHour = 0
     var selectedMinute = 0
     var selectedSeconds = 0
+    var recurring = false
     
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var TimePicker: UIPickerView!
@@ -60,6 +61,7 @@ class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, U
 //        TimerEndsTable.addSubview(recurringCell)
 //        
         self.view.addSubview(TimerEndsTable)
+
         
     }
 
@@ -116,6 +118,7 @@ class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, U
     }
     
     @IBAction func start(_ sender: UIButton) {
+        //keeping repeats as true - want timer to end through user input
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(countDown), userInfo: nil, repeats: true)
     }
     
@@ -142,6 +145,14 @@ class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, U
             timeLabel.isHidden = true
             TimePicker.isHidden = false
             seconds = selectedHour*3600 + selectedMinute*60 + selectedSeconds
+            
+            //TODO figure out how to pass toggle value back to this view
+            //let recurCell:CustomRecurringCell = TimerEndsTable.cellForRow(at: NSIndexPath(row: 1, section: 0) as IndexPath) as! CustomRecurringCell
+            /*if(recurCell.toggleValue)
+            {
+                timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(countDown), userInfo: nil, repeats: true)
+            }*/
+            
         }
     }
     
@@ -214,6 +225,5 @@ class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, U
             TimerEndsTable.cellForRow(at: NSIndexPath(row: 0, section: 0) as IndexPath)?.detailTextLabel?.text = selectedRingtone
         }
     }
-    
     
 }

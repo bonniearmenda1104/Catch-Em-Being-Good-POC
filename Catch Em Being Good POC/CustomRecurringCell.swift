@@ -9,7 +9,9 @@
 import UIKit
 
 class CustomRecurringCell: UITableViewCell {
-
+    
+    var toggleValue = Bool()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,6 +21,9 @@ class CustomRecurringCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    @IBAction func recurringToggle(_ sender: UISwitch) {
+        toggleValue = sender.isOn
     }
     
 }
