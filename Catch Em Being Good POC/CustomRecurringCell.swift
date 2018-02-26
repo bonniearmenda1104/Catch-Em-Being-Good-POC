@@ -7,10 +7,16 @@
 //
 
 import UIKit
+protocol CustomRecurringCellDelegate {
+    func didTapSwitch(cell: CustomRecurringCell)
+}
 
 class CustomRecurringCell: UITableViewCell {
     
-    var toggleValue = Bool()
+    @IBOutlet weak var recurringToggle: UISwitch!
+    var delegate: CustomRecurringCellDelegate!
+    //var callback: ((_ switch: UISwitch)->Void)?
+    //var toggleValue: Bool = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,8 +28,8 @@ class CustomRecurringCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    @IBAction func recurringToggle(_ sender: UISwitch) {
-        toggleValue = sender.isOn
+    @IBAction func recurringToggleChanged(_ sender: UISwitch) {
+        delegate.didTapSwitch(cell: self)
     }
     
 }

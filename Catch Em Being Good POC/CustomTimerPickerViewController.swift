@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+var recurring = false
 class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDelegate, UITableViewDataSource {
 
     var timer = Timer()
@@ -16,7 +16,6 @@ class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, U
     var selectedHour = 0
     var selectedMinute = 0
     var selectedSeconds = 0
-    var recurring = false
     
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var TimePicker: UIPickerView!
@@ -148,10 +147,15 @@ class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, U
             
             //TODO figure out how to pass toggle value back to this view
             //let recurCell:CustomRecurringCell = TimerEndsTable.cellForRow(at: NSIndexPath(row: 1, section: 0) as IndexPath) as! CustomRecurringCell
-            /*if(recurCell.toggleValue)
+            if(recurring)
             {
-                timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(countDown), userInfo: nil, repeats: true)
-            }*/
+                let when = DispatchTime.now() + 10
+                DispatchQueue.main.asyncAfter(deadline: when){
+                    // your code with delay
+                    self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.countDown), userInfo: nil, repeats: true)
+                }
+                
+            }
             
         }
     }
@@ -203,6 +207,7 @@ class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, U
         }
         else{
             let recurringCell:CustomRecurringCell = (TimerEndsTable.dequeueReusableCell(withIdentifier: "RecurringCell")as? CustomRecurringCell)!
+            recurringCell.delegate = self as CustomRecurringCellDelegate
             return recurringCell
         }
     }
@@ -212,7 +217,6 @@ class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, U
             performSegue(withIdentifier: "ShowRingtoneSegue", sender:self)
         }
     }
- 
     
     //MARK: - Unwind
     @IBAction func cancelToTimer(segue:UIStoryboardSegue){
@@ -227,3 +231,11 @@ class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, U
     }
     
 }
+
+extension UIViewController: CustomRecurringCellDelegate{
+    func didTapSwitch(cell: CustomRecurringCell) {
+        recurring = cell.recurringToggle.isOn
+    }
+}
+
+
