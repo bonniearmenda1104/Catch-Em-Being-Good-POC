@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C1517D5A207D7D9900921009 /* CustomVarTimerPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1517D59207D7D9900921009 /* CustomVarTimerPickerViewController.swift */; };
 		C17469781F6F908B0033C498 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17469771F6F908B0033C498 /* Helper.swift */; };
 		E327C5C41DF52BCE003579F2 /* TimerEndsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E327C5C31DF52BCE003579F2 /* TimerEndsTableViewController.swift */; };
 		E333C69A1DD195EC0076CCF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E333C6991DD195EC0076CCF1 /* AppDelegate.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C1517D59207D7D9900921009 /* CustomVarTimerPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomVarTimerPickerViewController.swift; sourceTree = "<group>"; };
 		C17469771F6F908B0033C498 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		E327C5C31DF52BCE003579F2 /* TimerEndsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerEndsTableViewController.swift; sourceTree = "<group>"; };
 		E333C6961DD195EC0076CCF1 /* Catch Em Being Good POC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Catch Em Being Good POC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,6 +120,7 @@
 				E333C69D1DD195EC0076CCF1 /* SecondViewController.swift */,
 				E333C69F1DD195EC0076CCF1 /* Main.storyboard */,
 				E3DF947C1DE155DB005AE8F2 /* CustomTimerPickerViewController.swift */,
+				C1517D59207D7D9900921009 /* CustomVarTimerPickerViewController.swift */,
 				E333C6A21DD195EC0076CCF1 /* Assets.xcassets */,
 				E333C6A41DD195EC0076CCF1 /* LaunchScreen.storyboard */,
 				E333C6A71DD195EC0076CCF1 /* Info.plist */,
@@ -212,7 +215,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "TsangChan Inc.";
 				TargetAttributes = {
 					E333C6951DD195EC0076CCF1 = {
@@ -293,6 +296,7 @@
 			files = (
 				E333C69E1DD195EC0076CCF1 /* SecondViewController.swift in Sources */,
 				E3DF947D1DE155DB005AE8F2 /* CustomTimerPickerViewController.swift in Sources */,
+				C1517D5A207D7D9900921009 /* CustomVarTimerPickerViewController.swift in Sources */,
 				E37856371E417BC300476269 /* CustomTimerEndsCell.swift in Sources */,
 				E333C69A1DD195EC0076CCF1 /* AppDelegate.swift in Sources */,
 				E333C69C1DD195EC0076CCF1 /* FirstViewController.swift in Sources */,
@@ -366,6 +370,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -373,6 +378,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -426,6 +432,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -433,6 +440,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
