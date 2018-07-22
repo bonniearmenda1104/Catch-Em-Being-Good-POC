@@ -127,6 +127,13 @@ class CustomVarTimerPickerViewController: UIViewController, UIPickerViewDelegate
         timeLabel.isHidden = false
         TimePicker.isHidden = true
         
+        //TODO:
+        // gather random numbers into dynamic array (number of values based on variableInput)
+        // while seconds is not 0,
+        // loop through array
+        // alert if seconds equals values in array
+        
+        
         var i = 1
         while i <= variableInput
         {

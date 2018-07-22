@@ -344,6 +344,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="fSb-Ts-eAm" kind="show" identifier="ShowRingtoneSegue" id="bjt-fM-vwS"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="VariableCell" textLabel="gAA-Gu-AAF" style="IBUITableViewCellStyleDefault" id="tQc-d0-W9g" userLabel="VariableCell" customClass="CustomVariableCell" customModule="Catch_Em_Being_Good_POC" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="72" width="375" height="44"/>
@@ -420,6 +423,50 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7s1-Ug-LnY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="699.20000000000005" y="1069.5652173913045"/>
+        </scene>
+        <!--V Choose Alarm-->
+        <scene sceneID="S47-b5-X3h">
+            <objects>
+                <tableViewController title="Choose Alarm" hidesBottomBarWhenPushed="YES" clearsSelectionOnViewWillAppear="NO" id="fSb-Ts-eAm" userLabel="V Choose Alarm" customClass="TimerEndsTableViewController" customModule="Catch_Em_Being_Good_POC" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" sectionIndexMinimumDisplayRowCount="1" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="jRQ-bA-jsC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ringtone" textLabel="r7D-DZ-nYZ" style="IBUITableViewCellStyleDefault" id="kBP-ez-XPD">
+                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kBP-ez-XPD" id="fbr-l5-PKo">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="r7D-DZ-nYZ">
+                                            <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="fSb-Ts-eAm" id="kNW-XT-rad"/>
+                            <outlet property="delegate" destination="fSb-Ts-eAm" id="qHM-JV-WnQ"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Choose Alarm" id="aEr-pg-FDH">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="JPR-AP-5TX"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="gxn-Tq-72L"/>
+                    </navigationItem>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ESg-8h-Jdy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2468" y="1068"/>
         </scene>
     </scenes>
     <resources>
