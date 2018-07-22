@@ -7,6 +7,7 @@
 //
 
 import UIKit
+var variableInput = 0
 class CustomVarTimerPickerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDelegate, UITableViewDataSource {
 
     var timer = Timer()
@@ -54,13 +55,12 @@ class CustomVarTimerPickerViewController: UIViewController, UIPickerViewDelegate
 //        TimerEndsTable.addSubview(timerEndsCell)
 //        
         //Register recurring cell xib
-        TimerEndsTable.register(UINib(nibName: "CustomRecurringCell", bundle: nil), forCellReuseIdentifier: "RecurringCell")
-//        let recurringCell:CustomRecurringCell = (TimerEndsTable.dequeueReusableCell(withIdentifier: "RecurringCell")as? CustomRecurringCell)!
-//        TimerEndsTable.addSubview(recurringCell)
+        TimerEndsTable.register(UINib(nibName: "CustomVariableCell", bundle: nil), forCellReuseIdentifier: "VariableCell")
+//        let variableCell:CustomVariableCell = (TimerEndsTable.dequeueReusableCell(withIdentifier: "VariableCell")as? CustomVariableCell)!
+//        TimerEndsTable.addSubview(variableCell)
 //        
         self.view.addSubview(TimerEndsTable)
-
-        
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
     }
 
     override func didReceiveMemoryWarning() {
@@ -126,27 +126,29 @@ class CustomVarTimerPickerViewController: UIViewController, UIPickerViewDelegate
         timeLabel.text = timeFormatted(totalSeconds: seconds)
         timeLabel.isHidden = false
         TimePicker.isHidden = true
-        if(seconds == 0)
+        
+        var i = 1
+        while i <= variableInput
         {
-            //Show timer alert for 10 seconds
-            let alert:UIAlertController = UIAlertController(title: "Timer is Done", message: ("TODO play the selected ringtone which is: " + selectedRingtone), preferredStyle: .alert)
-            self.present(alert, animated: true, completion: nil)
+            let number = Int(arc4random_uniform(UInt32(seconds)))
+        
+            if(seconds == number)
+            {
+                //Show timer alert for 10 seconds
+                let alert:UIAlertController = UIAlertController(title: "Timer is Done", message: ("TODO play the selected ringtone which is: " + selectedRingtone), preferredStyle: .alert)
+                self.present(alert, animated: true, completion: nil)
+                
+                // change to desired number of seconds (in this case 10 seconds)
+                let when = DispatchTime.now() + 10
+                DispatchQueue.main.asyncAfter(deadline: when){
+                    // your code with delay
+                    alert.dismiss(animated: true, completion: nil)
+                }
             
-            // change to desired number of seconds (in this case 10 seconds)
-            let when = DispatchTime.now() + 10
-            DispatchQueue.main.asyncAfter(deadline: when){
-                // your code with delay
-                alert.dismiss(animated: true, completion: nil)
-            }
-            
-            timer.invalidate()
-            timeLabel.isHidden = true
-            TimePicker.isHidden = false
-            seconds = selectedHour*3600 + selectedMinute*60 + selectedSeconds
             
             //TODO figure out how to pass toggle value back to this view
             //let recurCell:CustomRecurringCell = TimerEndsTable.cellForRow(at: NSIndexPath(row: 1, section: 0) as IndexPath) as! CustomRecurringCell
-            if(recurring)
+            /*if(recurring)
             {
                 let when = DispatchTime.now() + 10
                 DispatchQueue.main.asyncAfter(deadline: when){
@@ -154,9 +156,17 @@ class CustomVarTimerPickerViewController: UIViewController, UIPickerViewDelegate
                     self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.countDown), userInfo: nil, repeats: true)
                 }
                 
-            }
+            }*/
             
+            }
+            i = i+1
         }
+        
+        timer.invalidate()
+        timeLabel.isHidden = true
+        TimePicker.isHidden = false
+        seconds = selectedHour*3600 + selectedMinute*60 + selectedSeconds
+        
     }
     
     private func timeFormatted(totalSeconds: Int) -> String {
@@ -205,9 +215,9 @@ class CustomVarTimerPickerViewController: UIViewController, UIPickerViewDelegate
             return timerEndsCell
         }
         else{
-            let recurringCell:CustomRecurringCell = (TimerEndsTable.dequeueReusableCell(withIdentifier: "RecurringCell")as? CustomRecurringCell)!
-            recurringCell.delegate = self as CustomRecurringCellDelegate
-            return recurringCell
+            let variableCell:CustomVariableCell = (TimerEndsTable.dequeueReusableCell(withIdentifier: "VariableCell")as? CustomVariableCell)!
+            variableCell.delegate = self as CustomVariableCellDelegate
+            return variableCell
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -231,5 +241,13 @@ class CustomVarTimerPickerViewController: UIViewController, UIPickerViewDelegate
     
 }
 
+extension UIViewController: CustomVariableCellDelegate{
+    
+    func didInputText(cell: CustomVariableCell) {
+        variableInput = Int(cell.variableTextboxInput)!
+        
+    }
+    
+}
 
 
