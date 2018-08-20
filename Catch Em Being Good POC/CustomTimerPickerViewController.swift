@@ -23,6 +23,7 @@ class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, U
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var TimePicker: UIPickerView!
     @IBOutlet weak var TimerEndsTable: UITableView!
+    @IBOutlet weak var startBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,9 +31,11 @@ class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, U
         // Do any additional setup after loading the view.
         TimePicker.dataSource = self
         TimePicker.delegate = self
-        TimePicker.selectRow(1, inComponent: 2, animated: false)
         secondsPickerData = [0, 15, 30, 45]
-        
+        TimePicker.selectRow(1, inComponent: 2, animated: true)
+        selectedSeconds = secondsPickerData[1] + 1
+        seconds = selectedHour*3600 + selectedMinute*60 + selectedSeconds
+
         let hourLabel:UILabel = UILabel()
         hourLabel.frame = CGRect(x: 42, y: TimePicker.frame.size.height/2-15, width: 75, height: 30)
         hourLabel.text = "hours"
@@ -51,6 +54,7 @@ class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, U
         self.view.addSubview(TimePicker)
         
         timeLabel.isHidden = true
+        startBtn.isEnabled = true
         
         TimerEndsTable.dataSource = self
         TimerEndsTable.delegate = self
@@ -64,8 +68,6 @@ class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, U
 //        TimerEndsTable.addSubview(recurringCell)
 //        
         self.view.addSubview(TimerEndsTable)
-
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -127,6 +129,7 @@ class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, U
         timer.invalidate()
         timeLabel.isHidden = true
         TimePicker.isHidden = false
+        startBtn.isEnabled = true
         seconds = selectedHour*3600 + selectedMinute*60 + selectedSeconds
     }
     
@@ -141,6 +144,8 @@ class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, U
         timeLabel.text = timeFormatted(totalSeconds: seconds)
         timeLabel.isHidden = false
         TimePicker.isHidden = true
+        startBtn.isEnabled = false
+        
         if(seconds == 0)
         {
             //Show timer alert for 3 seconds and vibrate
@@ -158,6 +163,7 @@ class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, U
             timer.invalidate()
             timeLabel.isHidden = true
             TimePicker.isHidden = false
+            startBtn.isEnabled = true
             seconds = selectedHour*3600 + selectedMinute*60 + selectedSeconds
             
             //TODO figure out how to pass toggle value back to this view
@@ -226,24 +232,24 @@ class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, U
             return recurringCell
         //}
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    /*func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if indexPath.row == 0{
             performSegue(withIdentifier: "ShowRingtoneSegue", sender:self)
         }
-    }
+    }*/
     
     //MARK: - Unwind
     @IBAction func cancelToTimer(segue:UIStoryboardSegue){
         
     }
     
-    @IBAction func saveSelectedRingtone(segue:UIStoryboardSegue){
+    /*@IBAction func saveSelectedRingtone(segue:UIStoryboardSegue){
         if let timerEndsVC = segue.source as? TimerEndsTableViewController{
             selectedRingtone = timerEndsVC.selectedRingtone!
             TimerEndsTable.cellForRow(at: NSIndexPath(row: 0, section: 0) as IndexPath)?.detailTextLabel?.text = selectedRingtone
         }
-    }
+    }*/
     
 }
 

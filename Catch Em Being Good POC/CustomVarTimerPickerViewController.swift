@@ -24,6 +24,7 @@ class CustomVarTimerPickerViewController: UIViewController, UIPickerViewDelegate
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var TimePicker: UIPickerView!
     @IBOutlet weak var TimerEndsTable: UITableView!
+    @IBOutlet weak var startButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,8 +32,10 @@ class CustomVarTimerPickerViewController: UIViewController, UIPickerViewDelegate
         // Do any additional setup after loading the view.
         TimePicker.dataSource = self
         TimePicker.delegate = self
-        TimePicker.selectRow(1, inComponent: 2, animated: false)
         secondsPickerData = [0, 15, 30, 45]
+        TimePicker.selectRow(1, inComponent: 2, animated: false)
+        selectedSeconds = secondsPickerData[1] + 1
+        seconds = selectedHour*3600 + selectedMinute*60 + selectedSeconds
         
         let hourLabel:UILabel = UILabel()
         hourLabel.frame = CGRect(x: 42, y: TimePicker.frame.size.height/2-15, width: 75, height: 30)
@@ -52,6 +55,7 @@ class CustomVarTimerPickerViewController: UIViewController, UIPickerViewDelegate
         self.view.addSubview(TimePicker)
         
         timeLabel.isHidden = true
+        startButton.isEnabled = true
         
         TimerEndsTable.dataSource = self
         TimerEndsTable.delegate = self
@@ -127,6 +131,7 @@ class CustomVarTimerPickerViewController: UIViewController, UIPickerViewDelegate
         timer.invalidate()
         timeLabel.isHidden = true
         TimePicker.isHidden = false
+        startButton.isEnabled = true
         seconds = selectedHour*3600 + selectedMinute*60 + selectedSeconds
     }
     
@@ -151,6 +156,7 @@ class CustomVarTimerPickerViewController: UIViewController, UIPickerViewDelegate
         timeLabel.text = timeFormatted(totalSeconds: seconds)
         timeLabel.isHidden = false
         TimePicker.isHidden = true
+        startButton.isEnabled = false
         
         if(seconds == 0)
         {
@@ -169,6 +175,7 @@ class CustomVarTimerPickerViewController: UIViewController, UIPickerViewDelegate
             timer.invalidate()
             timeLabel.isHidden = true
             TimePicker.isHidden = false
+            startButton.isEnabled = true
             seconds = selectedHour*3600 + selectedMinute*60 + selectedSeconds
             numberToRepeat -= 1  //Need this to be before if condition below since 1 round already done, otherwise will be off by 1 error
             
