@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AudioToolbox
+
 var recurring = false
 class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDelegate, UITableViewDataSource {
 
@@ -16,6 +18,7 @@ class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, U
     var selectedHour = 0
     var selectedMinute = 0
     var selectedSeconds = 0
+    var secondsPickerData: [Int] = [Int]()
     
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var TimePicker: UIPickerView!
@@ -28,6 +31,7 @@ class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, U
         TimePicker.dataSource = self
         TimePicker.delegate = self
         TimePicker.selectRow(1, inComponent: 2, animated: false)
+        secondsPickerData = [0, 15, 30, 45]
         
         let hourLabel:UILabel = UILabel()
         hourLabel.frame = CGRect(x: 42, y: TimePicker.frame.size.height/2-15, width: 75, height: 30)
@@ -50,7 +54,7 @@ class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, U
         
         TimerEndsTable.dataSource = self
         TimerEndsTable.delegate = self
-        TimerEndsTable.register(UINib(nibName: "CustomTimerEndsCell", bundle: nil), forCellReuseIdentifier: "TimerEndsCell")
+        //TimerEndsTable.register(UINib(nibName: "CustomTimerEndsCell", bundle: nil), forCellReuseIdentifier: "TimerEndsCell")
 //        let timerEndsCell:CustomTimerEndsCell = (TimerEndsTable.dequeueReusableCell(withIdentifier: "TimerEndsCell")as? CustomTimerEndsCell)!
 //        TimerEndsTable.addSubview(timerEndsCell)
 //        
@@ -79,7 +83,10 @@ class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, U
         {
             return 25;
         }
-        
+        if(component == 2)
+        {
+            return secondsPickerData.count;
+        }
         return 60;
     }
     
@@ -91,7 +98,14 @@ class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, U
         
         let columnView:UILabel = UILabel()
         columnView.frame = CGRect(x: 35, y: 0, width: self.view.frame.size.width/3-35, height: 30)
-        columnView.text = String(row)
+        if(component == 2)
+        {
+            columnView.text = String(secondsPickerData[row])
+        }
+        else
+        {
+            columnView.text = String(row)
+        }
         columnView.textAlignment = NSTextAlignment.left
         
         return columnView;
@@ -102,7 +116,7 @@ class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, U
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedHour = pickerView.selectedRow(inComponent: 0)
         selectedMinute = pickerView.selectedRow(inComponent: 1)
-        selectedSeconds = pickerView.selectedRow(inComponent: 2) + 1
+        selectedSeconds = secondsPickerData[pickerView.selectedRow(inComponent: 2)] + 1;  //+1 to compensate for off by 1 error
         
         seconds = selectedHour*3600 + selectedMinute*60 + selectedSeconds
         
@@ -129,12 +143,13 @@ class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, U
         TimePicker.isHidden = true
         if(seconds == 0)
         {
-            //Show timer alert for 10 seconds
-            let alert:UIAlertController = UIAlertController(title: "Timer is Done", message: ("TODO play the selected ringtone which is: " + selectedRingtone), preferredStyle: .alert)
+            //Show timer alert for 3 seconds and vibrate
+            let alert:UIAlertController = UIAlertController(title: "Timer is Done", message: ("Display will dismiss in 3 seconds"), preferredStyle: .alert)
             self.present(alert, animated: true, completion: nil)
+            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
             
-            // change to desired number of seconds (in this case 10 seconds)
-            let when = DispatchTime.now() + 10
+            // change to desired number of seconds (in this case 3 seconds)
+            let when = DispatchTime.now() + 3
             DispatchQueue.main.asyncAfter(deadline: when){
                 // your code with delay
                 alert.dismiss(animated: true, completion: nil)
@@ -149,11 +164,11 @@ class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, U
             //let recurCell:CustomRecurringCell = TimerEndsTable.cellForRow(at: NSIndexPath(row: 1, section: 0) as IndexPath) as! CustomRecurringCell
             if(recurring)
             {
-                let when = DispatchTime.now() + 10
-                DispatchQueue.main.asyncAfter(deadline: when){
+                //let when = DispatchTime.now() + 3
+                //DispatchQueue.main.asyncAfter(deadline: when){
                     // your code with delay
                     self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.countDown), userInfo: nil, repeats: true)
-                }
+                //}
                 
             }
             
@@ -171,7 +186,7 @@ class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, U
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "ShowRingtoneSegue"
@@ -190,26 +205,26 @@ class CustomTimerPickerViewController: UIViewController, UIPickerViewDelegate, U
         {
             selectedRingtone = "Ringtone 1"
         }
-    }
+    }*/
     
     //MARK: - TableView
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1;
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2;
+        return 1;
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0{
-            let timerEndsCell:CustomTimerEndsCell = (TimerEndsTable.dequeueReusableCell(withIdentifier: "TimerEndsCell")as? CustomTimerEndsCell)!
+        //if indexPath.row == 0{
+            /*let timerEndsCell:CustomTimerEndsCell = (TimerEndsTable.dequeueReusableCell(withIdentifier: "TimerEndsCell")as? CustomTimerEndsCell)!
             timerEndsCell.detailTextLabel?.text = selectedRingtone
             return timerEndsCell
         }
-        else{
+        else{*/
             let recurringCell:CustomRecurringCell = (TimerEndsTable.dequeueReusableCell(withIdentifier: "RecurringCell")as? CustomRecurringCell)!
             recurringCell.delegate = self as CustomRecurringCellDelegate
             return recurringCell
-        }
+        //}
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
