@@ -258,7 +258,11 @@ class CustomVarTimerPickerViewController: UIViewController, UIPickerViewDelegate
 extension UIViewController: CustomVariableCellDelegate{
     
     func didInputText(cell: CustomVariableCell) {
-        variableInput = Int(cell.variableTextboxInput)!
+        if (cell.variableTextboxInput.isEmpty == false)
+        {
+            variableInput = Int(cell.variableTextboxInput)!
+        }
+        
     }
 }
 
