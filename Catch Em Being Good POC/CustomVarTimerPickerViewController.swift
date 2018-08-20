@@ -55,7 +55,7 @@ class CustomVarTimerPickerViewController: UIViewController, UIPickerViewDelegate
         
         TimerEndsTable.dataSource = self
         TimerEndsTable.delegate = self
-        TimerEndsTable.register(UINib(nibName: "CustomRecurringCell", bundle: nil), forCellReuseIdentifier: "RecurringCell")
+        //TimerEndsTable.register(UINib(nibName: "CustomRecurringCell", bundle: nil), forCellReuseIdentifier: "RecurringCell")
 //        let timerEndsCell:CustomTimerEndsCell = (TimerEndsTable.dequeueReusableCell(withIdentifier: "TimerEndsCell")as? CustomTimerEndsCell)!
 //        TimerEndsTable.addSubview(timerEndsCell)
 //        
@@ -158,7 +158,6 @@ class CustomVarTimerPickerViewController: UIViewController, UIPickerViewDelegate
             let alert:UIAlertController = UIAlertController(title: "Timer is Done", message: ("Display will dismiss in 3 seconds"), preferredStyle: .alert)
             self.present(alert, animated: true, completion: nil)
             AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-            
             
             // change to desired number of seconds (in this case 3 seconds)
             let when = DispatchTime.now() + 3
